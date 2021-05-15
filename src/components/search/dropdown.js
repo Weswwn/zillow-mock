@@ -2,7 +2,6 @@
 import React from 'react';
 
 const Dropdown = ({items}) => {
-    console.log('dropdown:', items)
     return (
         <div style={{position: 'absolute', border: '1px solid gray', maxHeight: '400px', marginTop: '0.5rem', borderRadius:'8px', width:'100%', overflow: 'scroll'}}>
             <ul style={{padding: '0px', margin: '0px'}}>
@@ -13,6 +12,6 @@ const Dropdown = ({items}) => {
                 ))}
             </ul>
         </div>
-    )
-}
+    );
+};
 export default Dropdown;
