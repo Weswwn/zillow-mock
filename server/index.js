@@ -21,10 +21,10 @@ fs.createReadStream('data.csv')
   .on('data', (data) => results.push(data))
   .on('end', () => {
     listOfNormalizedResults = results.map(item => ({
-        address: normalizeStringHelper(item.ADDRESS),
-        city: normalizeStringHelper(item.CITY),
-        zip: item['ZIP OR POSTAL CODE'],
-        state: item['STATE OR PROVINCE']
+        address: normalizeStringHelper(item.ADDRESS).trim(),
+        city: normalizeStringHelper(item.CITY).trim(),
+        zip: item['ZIP OR POSTAL CODE'].trim(),
+        state: item['STATE OR PROVINCE'].trim()
       }));
   });
 
@@ -44,11 +44,11 @@ app.get('/address', (req, res) => {
   const matchedLocations = [];
   listOfNormalizedResults.forEach(location => {
     const combinedLocation = `${location.address} ${location.city} ${location.zip} ${location.state}`;
-    if (location.address.toLowerCase().trim().includes(searchQuery) ||
-        location.city.toLowerCase().trim().includes(searchQuery) ||
-        location.zip.toLowerCase().trim().includes(searchQuery) ||
-        location.state.toLowerCase().trim().includes(searchQuery) || 
-        combinedLocation.toLowerCase().trim().includes(searchQuery)
+    if (location.address.toLowerCase().includes(searchQuery) ||
+        location.city.toLowerCase().includes(searchQuery) ||
+        location.zip.toLowerCase().includes(searchQuery) ||
+        location.state.toLowerCase().includes(searchQuery) || 
+        combinedLocation.toLowerCase().includes(searchQuery)
     ) {
       matchedLocations.push(location);  
     }
