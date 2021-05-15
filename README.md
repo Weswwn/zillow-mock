@@ -1,7 +1,8 @@
 # Starting the Environment
 
-#To start the FE: npm run start
-#To start the BE: npm run start:server
+# To start the FE: npm run start
+
+# To start the BE: npm run start:server
 
 Under the hood, this app was initially created with create-react-app.
 
